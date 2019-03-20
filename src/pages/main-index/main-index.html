@@ -1,0 +1,25 @@
+<!--
+  Generated template for the MainIndexPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>南宁市住房局OA管理系统</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+  <ion-refresher (ionRefresh)="doRefresh($event)" #refresher>
+    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="下拉刷新" refreshingSpinner="circles" refreshingText="刷新中...">
+    </ion-refresher-content>
+  </ion-refresher>
+  <div class="block" [ngStyle]="{'background-color':item.bgcolor,'background-image':'url(/assets/'+(i+1)+'.png)','color':item.forecolor}"
+    *ngFor="let item of titleArr, let i = index" (click)="pushDocumentList(i)">
+    <ion-label [ngStyle]="{'borderTopColor':item.forecolor}">{{item.text}}</ion-label>
+    <ion-note color="danger" *ngIf="countArr.length && countArr[i] > 0">({{countArr[i]}})</ion-note>
+    <ion-icon name="arrow-round-forward"></ion-icon>
+  </div>
+</ion-content>

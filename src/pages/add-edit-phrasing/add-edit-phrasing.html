@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-navbar color="primary" mode="ios">
+      <ion-buttons start>
+          <button ion-button (click)="closemodal()">关闭</button>
+        </ion-buttons>
+    <ion-title>{{ Title }}</ion-title>
+    <ion-buttons slot="end">
+      <button ion-button (click)="submit()">提交</button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<ion-content class="phrasing">
+  <div class="phrasingContent">
+    <textarea placeholder="请输入常用语" [(ngModel)]="text" name="" id="" rows="10"></textarea>
+  </div>
+  <!-- <div style="margin-top: 2rem;padding: 0 2rem;">
+    <ion-button expand="block" (click)="submit()">保存</ion-button>
+  </div> -->
+</ion-content>

@@ -1,0 +1,109 @@
+<!--
+  Generated template for the MinePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>mine</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="main">
+  <div class="mybg" (click)="GoDetails()">
+    <div class="personal flexBox">
+      <div class="headPortrait">
+        <img src="../../assets/head.png" alt="" />
+      </div>
+      <div class="personText">
+        <p>{{ personaldetails.GetUserName }}</p>
+        <p>{{ personaldetails.DeptName }}</p>
+      </div>
+    </div>
+  </div>
+  <ion-list class="personList">
+    <div class="flexBox" (click)="Changepassword()">
+      <div class="flexLeftContent flexBox flex1W100">
+        <div class="flexLeftContent">
+          <i class="iconfont" style="color:#1e9fff">&#xe60f;</i>
+        </div>
+        <div class="flexRightContent functionText flex1W100">
+          <p>
+            修改密码
+          </p>
+        </div>
+      </div>
+      <div class="flexRightContent iconRight">
+        <i class="iconfont">&#xe955;</i>
+      </div>
+    </div>
+    <div class="flexBox" (click)="toPhrasing()">
+      <div class="flexLeftContent flexBox flex1W100">
+        <div class="flexLeftContent">
+          <i class="iconfont" style="color:#1e9fff">&#xe690;</i>
+        </div>
+        <div class="flexRightContent functionText flex1W100">
+          <p>
+            常用语设置
+          </p>
+        </div>
+      </div>
+      <div class="flexRightContent iconRight">
+        <i class="iconfont">&#xe955;</i>
+      </div>
+    </div>
+    <div class="flexBox" (click)="toQr()">
+      <div class="flexLeftContent flexBox flex1W100">
+        <div class="flexLeftContent">
+          <i class="iconfont" style="color:#1e9fff">&#xe639;</i>
+        </div>
+        <div class="flexRightContent functionText flex1W100">
+          <p>
+            二维码
+          </p>
+        </div>
+      </div>
+      <div class="flexRightContent iconRight">
+        <i class="iconfont">&#xe955;</i>
+      </div>
+    </div>
+    <div class="flexBox">
+      <div class="flexLeftContent flexBox flex1W100">
+        <div class="flexLeftContent">
+          <i class="iconfont" style="color:#1e9fff">&#xe61e;</i>
+        </div>
+        <div class="flexRightContent  flex1W100 functionText">
+          <p class="flex1W100 flexBox">
+            <span class="flexLeftContent flex1W100">版本信息</span>
+            <span class="flexRightContent" style="color: #999">{{
+              versionCode
+            }}</span>
+          </p>
+        </div>
+      </div>
+      <div class="flexRightContent iconRight">
+        <!-- <i class="iconfont">&#xe955;</i> -->
+      </div>
+    </div>
+    <div class="flexBox">
+      <div class="flexLeftContent flexBox flex1W100">
+        <div class="flexLeftContent">
+          <i class="iconfont" style="color:#1e9fff">&#xe608;</i>
+        </div>
+        <div
+          class="flexRightContent functionText flex1W100"
+          (click)="presentEndAlert()"
+        >
+          <p>
+            注销登录
+          </p>
+        </div>
+      </div>
+      <div class="flexRightContent iconRight">
+        <i class="iconfont">&#xe955;</i>
+      </div>
+    </div>
+  </ion-list>
+</ion-content>
+

@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-navbar color="primary" mode="ios" title="返回">
+
+    <ion-title>常用语设置</ion-title>
+    <ion-buttons slot="end">
+      <button ion-button (click)="phrasingModal('添加')">添加</button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="phrasing">
+  <!-- <div class="addBtn">
+    <ion-button
+      [routerLink]="['/add-edit-phrasing']"
+      [queryParams]="{ title: '添加' }"
+      routerLinkActive="router-link-active"
+      size="small"
+      >添加常用语</ion-button
+    >
+  </div> -->
+  <ion-list class="phrasingList" *ngIf="myList">
+    <div class="flexBox" *ngFor="let item of myList; let i = index">
+      <div class="flexLeftContent flex1W100 flexBox">
+        <div class="flexLeftContent">
+          <span>{{ i + 1 }}.</span>
+        </div>
+        <div class="flexRightContent cent">
+          <div>
+            {{ item.Text }}
+          </div>
+        </div>
+      </div>
+      <div class="flexRightContent minwidth flexBox">
+        <div>
+          <button ion-button size="small" (click)="phrasingModal('编辑', item)"
+            >编辑</button>
+        </div>
+        <div>
+          <button ion-button size="small" (click)="delete(item.ID)">删除</button>
+        </div>
+      </div>
+    </div>
+  </ion-list>
+</ion-content>

@@ -1,3 +1,6 @@
+import { MinePage } from './../mine/mine';
+import { AddresslistPage } from './../addresslist/addresslist';
+import { MainIndexPage } from './../main-index/main-index';
 import { Component } from '@angular/core';
 
 import { AboutPage } from '../about/about';
@@ -9,9 +12,9 @@ import { HomePage } from '../home/home';
 })
 export class TabsPage {
 
-  tab1Root = HomePage;
-  tab2Root = AboutPage;
-  tab3Root = ContactPage;
+  tab1Root = MainIndexPage;
+  tab2Root = AddresslistPage;
+  tab3Root = MinePage;
 
   constructor() {
 
