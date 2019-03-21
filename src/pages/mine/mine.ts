@@ -64,10 +64,10 @@ export class MinePage implements OnInit {
 
      if(! this.platform.is('moboleweb')){
 
-       this.appVersion.getVersionCode().then(value => {
-         this.versionCode =
-           (value + '').indexOf('.') > -1 ? value.toString() : value + '.0';
-       });
+      //  this.appVersion.getVersionCode().then(value => {
+      //    this.versionCode =
+      //      (value + '').indexOf('.') > -1 ? value.toString() : value + '.0';
+      //  });
      }
     })
   }

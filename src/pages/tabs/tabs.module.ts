@@ -5,6 +5,7 @@ import { IonicModule, IonicPageModule } from 'ionic-angular';
 import { TabsPage } from './tabs';
 import { MainIndexPageModule } from '../main-index/main-index.module';
 import { MinePageModule } from '../mine/mine.module';
+import { AddresslistPageModule } from '../addresslist/addresslist.module';
 
 
 
@@ -16,8 +17,8 @@ import { MinePageModule } from '../mine/mine.module';
     IonicPageModule.forChild(TabsPage),
     MainIndexPageModule,
     MinePageModule,
+    AddresslistPageModule
   ],
    declarations: [TabsPage],
-  // entryComponents:[TabsPage]
 })
 export class TabsPageModule {}

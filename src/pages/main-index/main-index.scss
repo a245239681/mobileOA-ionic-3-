@@ -1,3 +1,77 @@
 page-main-index {
-
+    .bg {
+        height: 75vw;
+        background-repeat: no-repeat;
+        background-size: 100% auto;
+        background-position: top center;
+        background-image: url(/assets/bg.png);
+      }
+      
+      h1.title {
+        position: absolute;
+        width: 16vw;
+        height: 16vw;
+        margin: 0 0 0 -8vw;
+        background: url(/assets/image/hyymlogo.png) center;
+        left: 50%;
+        top: 52vw;
+        background-size: 75%;
+        background-repeat: no-repeat;
+        background-color: white;
+        border-radius: 50%;
+        box-shadow: 0px 0px 7px 2px #8ab5ff;
+      }
+      p.title{
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 67vw;
+        text-align: center;
+        color: #4c8dff;
+      }
+      
+      .block {
+        float: left;
+        width: 47vw;
+        margin: 4vw 0 0 2vw;
+        height: 23vw;
+        background: right top no-repeat;
+        background-origin: content-box;
+        background-size: 10vw;
+        padding: 2vw;
+        position: relative;
+      }
+      
+      ion-icon {
+        position: absolute;
+        right: 4vw;
+        bottom: 1vw;
+        font-size: 6vw;
+        font-weight: bold;
+      }
+      
+      ion-label {
+        font-size: 5vw;
+        font-weight: bold;
+        padding: 2vw 0;
+        border-top: 1vw solid;
+        display: inline-block;
+        margin: -2vw 2vw 0 0;
+        width: 2em;
+        white-space: nowrap;
+      }
+      
+      ion-note {
+        font-size: 3vw;
+        position: absolute;
+        top: 4.5vw;
+        right: 16vw;
+      }
+      
+      ion-title {
+        -webkit-padding-start: 0px;
+        padding-inline-start: 0px;
+        -webkit-padding-end: 0px;
+        padding-inline-end: 0px;
+      }
 }

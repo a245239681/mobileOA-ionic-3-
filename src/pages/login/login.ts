@@ -5,6 +5,7 @@ import { loginModel, LoginService } from '../../service/login/login.service';
 import { UserInfo } from '../../infrastructure/user-info';
 import { CommonHelper } from '../../infrastructure/commonHelper';
 import { MainindexService } from '../../service/maiindex/mainindex.service';
+import { TabsPage } from '../tabs/tabs';
 
 /**
  * Generated class for the LoginPage page.
@@ -115,7 +116,10 @@ export class LoginPage {
         const id = userinfo.ID + '';
         this.userinfo.PersonageId(id, 'id');
         this.userinfo.Birthday(userinfo.Birthday);
-        this.navCtrl.setRoot('/tabs/tabs');
+        /**
+         * 跳到tabs
+         */
+        this.navCtrl.setRoot(TabsPage);
         this.toast.presentToast(
           '欢迎登陆住房局OA管理系统！',
           'success',
@@ -146,17 +150,5 @@ export class LoginPage {
       }
       this.isPasswordEmpty = false;
     }
-  }
-
-  // 接口测试
-  output() {
-    // this.mainindexService.getmainindexdata().subscribe((res) => {
-    //   console.log(res);
-    // });
-    // this.mainindexService.getneedtodolist(1).subscribe((res) => {
-    //   console.log(res);
-    //   this.nav.navigateForward("/tabs/tabs");
-    // }, (err) => {
-    // });
   }
 }

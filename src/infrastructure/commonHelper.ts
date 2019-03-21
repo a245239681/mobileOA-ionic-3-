@@ -5,6 +5,7 @@ import { FormGroup } from "@angular/forms";
 
 @Injectable()
 export class CommonHelper {
+  
   toast: Toast;
 
   loading: Loading;

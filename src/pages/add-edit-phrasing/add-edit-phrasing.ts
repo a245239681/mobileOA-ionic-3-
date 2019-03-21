@@ -10,12 +10,15 @@ import { CommonHelper } from '../../infrastructure/commonHelper';
  * Ionic pages and navigation.
  */
 
+
 @IonicPage()
 @Component({
   selector: 'page-add-edit-phrasing',
   templateUrl: 'add-edit-phrasing.html',
 })
 export class AddEditPhrasingPage {
+
+
 
    /** 开启页面传过来的值 */
     data: any;

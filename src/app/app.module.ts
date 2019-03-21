@@ -1,46 +1,60 @@
+import { LoginPageModule } from './../pages/login/login.module';
+import { UserInfo } from './../infrastructure/user-info';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
-
-import { AboutPage } from '../pages/about/about';
-import { ContactPage } from '../pages/contact/contact';
-import { HomePage } from '../pages/home/home';
-import { TabsPage } from '../pages/tabs/tabs';
-
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { TabsPageModule } from '../pages/tabs/tabs.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CommonHelper } from '../infrastructure/commonHelper';
+import { API_URL } from '../infrastructure/host-address';
+import { environment } from '../environments/environment';
+import { CachingInterceptor, AuthInterceptor } from '../infrastructure/http-interceptor';
+import { RequestCache, RequestCacheWithMap } from '../infrastructure/request-cache';
+
 
 @NgModule({
   declarations: [
     MyApp,
-    AboutPage,
-    ContactPage,
-    HomePage,
 
   ],
   imports: [
     BrowserModule,
     TabsPageModule,
+    LoginPageModule,
     HttpClientModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp, {
+      tabsHideOnSubPages: true,    //导航页覆盖底下tab
+      backButtonText:'返回',
+      backButtonIcon:'ios-arrow-back'
+    }),
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    AboutPage,
-    ContactPage,
-    HomePage,
-
   ],
   providers: [
     CommonHelper,
     StatusBar,
-     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    SplashScreen,
+    UserInfo,
+    CommonHelper,
+    {
+      provide: API_URL,
+      useValue: environment.url,
+    },
+    [
+      { provide: HTTP_INTERCEPTORS, useClass: CachingInterceptor, multi: true },
+      {
+        provide: HTTP_INTERCEPTORS,
+        useClass: AuthInterceptor,
+        multi: true
+      }
+    ],
+    { provide: RequestCache, useClass: RequestCacheWithMap },
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
   ]
 })
-export class AppModule {}
+export class AppModule { }

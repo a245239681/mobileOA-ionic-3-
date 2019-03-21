@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams, Refresher } from 'ionic-angular';
 import { MainindexService } from '../../service/maiindex/mainindex.service';
 import { CommonHelper } from '../../infrastructure/commonHelper';
+import { DocumentlistPage } from '../documentlist/documentlist';
 
 /**
  * Generated class for the MainIndexPage page.
@@ -86,19 +87,11 @@ export class MainIndexPage implements OnInit {
     */
    pushDocumentList(index: number) {
      if (index === 3) {
-       // 进入已办页面
-       this.navCtrl.push('havedonework');
-       // this.route.navigate(['havedonework'], {
-       //   queryParams: {
-       //     'type': ++index
-       //   }
-       // });
      } else {
        // 进入公文列表 1 收文 2 发文 3 传阅件
-       this.navCtrl.push('documentlist', {
-         queryParams: {
-           type: ++index
-         }
+       this.navCtrl.push(DocumentlistPage,{
+         type: ++index,
+
        });
      }
    }
