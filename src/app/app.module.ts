@@ -1,3 +1,4 @@
+import { FileTransfer } from '@ionic-native/file-transfer/ngx';
 import { LoginPageModule } from './../pages/login/login.module';
 import { UserInfo } from './../infrastructure/user-info';
 import { NgModule, ErrorHandler } from '@angular/core';
@@ -13,7 +14,11 @@ import { API_URL } from '../infrastructure/host-address';
 import { environment } from '../environments/environment';
 import { CachingInterceptor, AuthInterceptor } from '../infrastructure/http-interceptor';
 import { RequestCache, RequestCacheWithMap } from '../infrastructure/request-cache';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ComponentsModule } from '../components/components.module';
+import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
+import { FileOpener } from '@ionic-native/file-opener/ngx';
+import { File } from '@ionic-native/file/ngx';
 
 @NgModule({
   declarations: [
@@ -25,6 +30,9 @@ import { RequestCache, RequestCacheWithMap } from '../infrastructure/request-cac
     TabsPageModule,
     LoginPageModule,
     HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    ComponentsModule,
     IonicModule.forRoot(MyApp, {
       tabsHideOnSubPages: true,    //导航页覆盖底下tab
       backButtonText:'返回',
@@ -41,6 +49,10 @@ import { RequestCache, RequestCacheWithMap } from '../infrastructure/request-cac
     SplashScreen,
     UserInfo,
     CommonHelper,
+    InAppBrowser,
+    FileOpener,
+    File,
+    FileTransfer,
     {
       provide: API_URL,
       useValue: environment.url,

@@ -1,0 +1,57 @@
+<!--
+  Generated template for the DocumentdetailPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{ title }}</ion-title>
+    <ion-buttons [hidden]="!nbyj()" slot="end">
+      <ion-buttons (click)="pushtoadvice()">拟办意见</ion-buttons>
+    </ion-buttons>
+    <ion-buttons [hidden]="!(itemmodel['Backable'] && !nbyj())" slot="end">
+      <ion-buttons (click)="getBack(itemmodel)">取回</ion-buttons>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content style="padding:0">
+  <handleinfo [itemmodel]="itemmodel" *ngIf="type == '1'"></handleinfo>
+  <circulationinfo [itemmodel]="itemmodel" *ngIf="type == '2'"></circulationinfo>
+  <attachmentlist [itemmodel]="itemmodel" *ngIf="type == '3'"></attachmentlist>
+  <sign [itemmodel]="itemmodel" *ngIf="type == '4' || type == '5'"></sign>
+  <documentpaper [itemmodel]="itemmodel" *ngIf="type == '7'"></documentpaper>
+  <div class="parent" *ngIf="type == '6'">
+    <ion-buttons (click)="openDocument()" class="center">再次打开正文</ion-buttons>
+  </div>
+
+  <ion-segment (ionChange)="segmentChanged($event)">
+    <ion-segment-button value="1" checked>
+      <ion-label>办理信息</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="2">
+      <ion-label>流转信息</ion-label>
+    </ion-segment-button>
+    <ion-segment-button *ngIf="itemmodel['documenttype'] == 1" value="4">
+      <ion-label>办文笺</ion-label>
+    </ion-segment-button>
+    <ion-segment-button *ngIf="itemmodel['documenttype'] == 2" value="5">
+      <ion-label>发文笺</ion-label>
+    </ion-segment-button>
+    <ion-segment-button *ngIf="itemmodel['documenttype'] == 2 || itemmodel['documenttype'] == 5" value="6">
+      <ion-label>正文</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="3">
+      <ion-label>附件</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="7">
+      <ion-label>相关公文</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+  <!-- <div style="height: 1rem"></div> -->
+  <!-- 在五个组件中切换 -->
+  <!-- <content>
+    
+  </content> -->
+</ion-content>

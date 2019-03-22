@@ -1,3 +1,4 @@
+import { DocumentdetailPage } from './../documentdetail/documentdetail';
 import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams, Refresher, InfiniteScroll } from 'ionic-angular';
 import { MainindexService } from '../../service/maiindex/mainindex.service';
@@ -213,21 +214,19 @@ export class DocumentlistPage {
     /** 把操作列表添加到json */
     item['Operationlist'] = this.title;
 
-    // // 点击签收
-    // this.mainindexservice
-    //   .signclick(item['Id'], item['ProcessType'], item['CoorType'])
-    //   .subscribe(
-    //     res => {
-    //       this.route.navigate(['documentdetail'], {
-    //         queryParams: {
-    //           item: JSON.stringify(item)
-    //         }
-    //       });
-    //     },
-    //     err => {
-    //       this.toast.presentToast('请求失败');
-    //     }
-    //   );
+    // 点击签收
+    this.mainindexservice
+      .signclick(item['Id'], item['ProcessType'], item['CoorType'])
+      .subscribe(
+        res => {
+          this.nav.push(DocumentdetailPage,{
+            'item': item
+          })
+        },
+        err => {
+          this.toast.presentToast('请求失败');
+        }
+      );
   }
 
 }

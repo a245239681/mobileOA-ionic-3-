@@ -1,0 +1,62 @@
+<ion-content>
+  <div class="kp">
+    <div class="bt" *ngIf="header">
+      <span>{{header['Title']}}</span>
+    </div>
+    <!-- 收文 传阅 -->
+    <div *ngIf="(itemmodel.documenttype == 1 || itemmodel.documenttype == 3 ||  itemmodel.documenttype == 4) && header">
+      <div>
+        <span class='texts' style='margin-right: 8%;'>紧急程度：{{ header.Emergency }}</span>
+        <span class='texts' style="min-width: 58%;display: inline-block;">完成时限：{{ header.FinishDate | date:'yyyy年MM月dd日 HH:mm' }}</span>
+      </div>
+      <div>
+        <span class='texts'>来文文号：</span>
+        <span class='texts'>{{ header.SerialNumber }}</span>
+      </div>
+      <div>
+        <span class='texts'>来文单位：</span>
+        <span class='texts'>{{ header.Department }}</span>
+      </div>
+    </div>
+    <!-- 发文 -->
+    <div *ngIf="(itemmodel.documenttype == 2 || itemmodel.documenttype == 5) && header">
+      <div>
+        <span class='texts'>主&#12288;送：</span>
+        <span class='texts'>{{ header.Department }}</span>
+      </div>
+      <div>
+        <span class='texts'>公文文号：</span>
+        <span class='texts'>{{ header.SerialNumber }}</span>
+      </div>
+      <div>
+        <span class='texts'>签&nbsp;发&nbsp;人：</span>
+        <span class='texts'>{{ header.AttituderName }}</span>
+      </div>
+    </div>
+
+  </div>
+  <div>
+    <div *ngFor="let item of adcviceArr; let i = index">
+      <!-- 头部视图是否显示要看该头部下有没有意见，没有就不显示了 -->
+      <div *ngIf="item.length > 0" class="kp neir" [ngStyle]="{'border-bottom': borderbottom[i]}">
+        <div class="bt neirbt" [ngStyle]="{'color': forecolors[i]}">
+          <span>{{keyArr[i]}}</span>
+        </div>
+        <div *ngFor="let subitem of item; let n = index" class="reny">
+          <div>
+            <span class='texts'>部门：</span>
+            <span class='texts' style="width: 70%;display: inline-block;">{{ subitem['DeptName'] }}</span>
+          </div>
+          <div>
+            <span class='texts'>拟办意见：{{ subitem['Content'] }}</span>
+            <!-- <span class='texts' style="width: 70%;display: inline-block;"></span> -->
+          </div>
+          <div>
+            <span class='texts'>{{ subitem['StaffName'] }} ({{ subitem['StaffDuty'] }})：{{ subitem['TimeStr'] }}</span>
+          </div>
+          <span class='fgx' *ngIf="fgx(item,n)"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

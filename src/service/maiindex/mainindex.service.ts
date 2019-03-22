@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { identifierModuleUrl } from '@angular/compiler';
 import { ApiUrlManagement } from '../../infrastructure/api-url-management';
-import { Observable } from  'rxjs/Observable';
+import { Observable } from 'rxjs/Observable';
 
 
 
@@ -13,12 +13,13 @@ import { Observable } from  'rxjs/Observable';
 
 @Injectable()
 export class MainindexService {
-  constructor(public httpclient: HttpClient) {}
+  constructor(public httpclient: HttpClient) { }
 
   /**
    * 获取首页条数
    */
   getmainindexdata(): Observable<any> {
+    // this.commonHelper.preventLoading();
     return this.httpclient.get<any>(
       ApiUrlManagement.MainindexData + '?tag=oa_receive_l'
     );
@@ -102,10 +103,10 @@ export class MainindexService {
   getReciveDetailInfo(receiveId: string, subid: string = ''): Observable<any> {
     return this.httpclient.get(
       ApiUrlManagement.getReciveDetailInfo +
-        '?receiveId=' +
-        receiveId +
-        '&ID=' +
-        subid
+      '?receiveId=' +
+      receiveId +
+      '&ID=' +
+      subid
     );
   }
   /**
@@ -158,12 +159,12 @@ export class MainindexService {
   ): Observable<any> {
     return this.httpclient.get(
       ApiUrlManagement.getToastType +
-        '?id=' +
-        Id +
-        '&processType=' +
-        processType +
-        '&coorType=' +
-        coorType
+      '?id=' +
+      Id +
+      '&processType=' +
+      processType +
+      '&coorType=' +
+      coorType
     );
   }
 
@@ -216,8 +217,11 @@ export class MainindexService {
   }
 
   /**
-   *
+   *获取通讯录数据
    */
+  getMaliList(): Observable<any> {
+    return this.httpclient.get(ApiUrlManagement.getMail);
+  }
 
   /**
    * 获取局领导数据
@@ -246,12 +250,12 @@ export class MainindexService {
   ): Observable<any> {
     return this.httpclient.get(
       ApiUrlManagement.Sign +
-        '?relationId=' +
-        Id +
-        '&processType=' +
-        processType +
-        '&coorType=' +
-        coorType
+      '?relationId=' +
+      Id +
+      '&processType=' +
+      processType +
+      '&coorType=' +
+      coorType
     );
   }
 
@@ -268,10 +272,10 @@ export class MainindexService {
   xiebanhandin(Id: string, coorType: string): Observable<any> {
     return this.httpclient.get(
       ApiUrlManagement.xiebanhandin +
-        '?relationId=' +
-        Id +
-        '&coordination=' +
-        coorType
+      '?relationId=' +
+      Id +
+      '&coordination=' +
+      coorType
     );
   }
 
@@ -282,12 +286,12 @@ export class MainindexService {
   ): Observable<any> {
     return this.httpclient.get(
       ApiUrlManagement.commitSimulateEnd +
-        '?id=' +
-        id +
-        '&processType=' +
-        processType +
-        '&coorType=' +
-        coorType
+      '?id=' +
+      id +
+      '&processType=' +
+      processType +
+      '&coorType=' +
+      coorType
     );
   }
 
@@ -306,12 +310,12 @@ export class MainindexService {
   ): Observable<any> {
     return this.httpclient.get(
       ApiUrlManagement.ValidMove +
-        '?id=' +
-        id +
-        '&processType=' +
-        processType +
-        '&coorType=' +
-        coorType
+      '?id=' +
+      id +
+      '&processType=' +
+      processType +
+      '&coorType=' +
+      coorType
     );
   }
 
@@ -325,10 +329,10 @@ export class MainindexService {
   getendAction(Id: string, processType: string): Observable<any> {
     return this.httpclient.get(
       ApiUrlManagement.GetActionTree +
-        '?id=' +
-        Id +
-        '&processType=' +
-        processType
+      '?id=' +
+      Id +
+      '&processType=' +
+      processType
     );
   }
 
@@ -338,10 +342,10 @@ export class MainindexService {
   GetActionTreeSend(Id: string, processType: string) {
     return this.httpclient.get(
       ApiUrlManagement.GetActionTreeSend +
-        '?id=' +
-        Id +
-        '&processType=' +
-        processType
+      '?id=' +
+      Id +
+      '&processType=' +
+      processType
     );
   }
 
@@ -383,10 +387,10 @@ export class MainindexService {
   getBackActionTree(Id: string, processType: string) {
     return this.httpclient.get(
       ApiUrlManagement.getBackActionTree +
-        '?id=' +
-        Id +
-        '&processType=' +
-        processType
+      '?id=' +
+      Id +
+      '&processType=' +
+      processType
     );
   }
 
@@ -399,16 +403,23 @@ export class MainindexService {
     });
   }
 
+  /**传阅阅读 */
+  SetDoRead(id, content) {
+    return this.httpclient.get(ApiUrlManagement.SetDoRead, {
+      params: { id: id, content: content }
+    });
+  }
+
   /** 退回验证 */
   ValidBack(Id: string, processType: string, coorType: string) {
     return this.httpclient.get(
       ApiUrlManagement.ValidBack +
-        '?id=' +
-        Id +
-        '&processType=' +
-        processType +
-        '&coorType=' +
-        coorType
+      '?id=' +
+      Id +
+      '&processType=' +
+      processType +
+      '&coorType=' +
+      coorType
     );
   }
   /** 验证局领导承办 */
@@ -454,6 +465,30 @@ export class MainindexService {
   /** 请求个人信息详情 */
   GetStaffInfo(id: string) {
     return this.httpclient.get(ApiUrlManagement.GetStaffInfo + '?id=' + id);
+  }
+  /** 获取相关公文 */
+  RelationTree(id: string) {
+    return this.httpclient.get(ApiUrlManagement.RelationTree + '?id=' + id);
+  }
+  /** 已办取回 */
+  Retrieve(id: string, processType: string, coorType: string) {
+    return this.httpclient.get(
+      ApiUrlManagement.Retrieve +
+      '?id=' +
+      id +
+      '&processType=' +
+      processType +
+      '&coorType=' +
+      coorType
+    );
+  }
+  /** 获取办文笺详情 */
+  GetReceiveData(Id: string) {
+    return this.httpclient.get(ApiUrlManagement.GetReceiveData, {
+      params: {
+        Id: Id
+      }
+    });
   }
 }
 

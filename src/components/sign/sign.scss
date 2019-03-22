@@ -1,0 +1,32 @@
+sign {
+    ion-content {
+        position: absolute;
+        left: 20vw;
+        width: 80vw;
+      }
+      
+      .list {
+        border-bottom: 1px solid rgb(204, 204, 204);
+        padding: 0.5rem 0 3px 0;
+      }
+      
+      .bt {
+        color: #D01D2C;
+        font-size: 1.1rem;
+        font-weight: 600;
+      }
+      
+      .texts {
+        font-size: 1rem;
+        color: #666666;
+        padding: 5px 0;
+      }
+      
+      .neir {
+        padding: 1rem 5px 2px 3vw;
+      
+        div {
+          margin: 5px 0;
+        }
+      }
+}

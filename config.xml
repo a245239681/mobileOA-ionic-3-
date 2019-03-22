@@ -84,4 +84,8 @@
     <plugin name="cordova-plugin-app-version" spec="~0.1.9" />
     <engine name="ios" spec="~4.5.5" />
     <plugin name="cordova-plugin-ionic-webview" spec="^2.0.0" />
+    <plugin name="cordova-plugin-inappbrowser" spec="3.0.0" />
+    <plugin name="cordova-plugin-file" spec="/Users/qyvs/Desktop/OA/oa-mobile/plugins/cordova-plugin-file" />
+    <plugin name="cordova-plugin-file-opener2" spec="/Users/qyvs/Desktop/OA/oa-mobile/plugins/cordova-plugin-file-opener2" />
+    <plugin name="cordova-plugin-file-transfer" spec="/Users/qyvs/Desktop/OA/oa-mobile/plugins/cordova-plugin-file-transfer" />
 </widget>

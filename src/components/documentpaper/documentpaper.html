@@ -1,0 +1,11 @@
+<ion-content>
+  <div class="lists" style="text-align: center">
+    <span class="bt">相关公文列表</span>
+  </div>
+  <ion-list *ngIf="isData">
+    <ion-item *ngFor="let item of attachmentlistArr" (click)="toDetail(item)">
+      <ion-label>{{ item['Title']}}</ion-label>
+    </ion-item>
+  </ion-list>
+  <p *ngIf="!isData">&nbsp; 没有相关公文</p>
+</ion-content>
