@@ -1,23 +1,25 @@
+import { DocumentlistPage } from './../documentlist/documentlist';
 import { Component, Input } from '@angular/core';
+import { IonicPage, NavController, NavParams, ModalController, ViewController } from 'ionic-angular';
 import { CommitModel, MainindexService } from '../../service/maiindex/mainindex.service';
-import { NavParams, ModalController, NavController } from 'ionic-angular';
 import { CommonHelper } from '../../infrastructure/commonHelper';
-import { DocumentlistPage } from '../../pages/documentlist/documentlist';
 
 /**
- * Generated class for the CountersignComponent component.
+ * Generated class for the CountersignPage page.
  *
- * See https://angular.io/api/core/Component for more info on Angular
- * Components.
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
  */
-@Component({
-  selector: 'countersign',
-  templateUrl: 'countersign.html'
-})
-export class CountersignComponent {
 
+@IonicPage()
+@Component({
+  selector: 'page-countersign',
+  templateUrl: 'countersign.html',
+})
+export class CountersignPage {
+  
   /** 开启页面传过来的值 */
-  @Input() data: any;
+  data: any;
   // @Output() selected = new EventEmitter<{ items: any[] }>();
   /** 协办 */
   listdataArr: any;
@@ -27,16 +29,18 @@ export class CountersignComponent {
   myData: CommitModel;
 
   constructor(
+    public navCtrl: NavController, 
     public navParams: NavParams,
-    public modalController: ModalController,
+    public viewCtrl: ViewController,
     private mainindexservice: MainindexService,
     private toast: CommonHelper,
-    private navCtrl: NavController
-    ) {
-   
+    )
+    {
+      this.data = this.navParams.get('data');
   }
 
-  ionViewDidLoad(){
+
+  ngOnInit() {
     this.getDeptTreeUntilMainDept();
     // 赋值给提交对象
     this.myData = {
@@ -58,6 +62,13 @@ export class CountersignComponent {
       /** 操作业务的获取 */
       processType: this.data.ProcessType
     };
+  }
+
+  /** 关闭模态框 */
+  closemodal(data?: any) {
+    this.viewCtrl.dismiss({
+      result: data
+    });
   }
 
   /** 请求一级部门 */
@@ -99,7 +110,7 @@ export class CountersignComponent {
         r => {
           if (r['State'] === 1) {
             this.navCtrl.popTo(DocumentlistPage);
-            
+            this.closemodal(r);
             this.toast.presentToast('提交成功');
           } else {
             this.toast.presentToast(r['Message']);

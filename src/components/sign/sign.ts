@@ -26,7 +26,8 @@ export class SignComponent {
     private toast: CommonHelper) {
   }
 
-  ionViewDidLoad(){
+
+  ngOnInit() {
     if (this.itemmodel.documenttype === 1) {
       this.title = '收文登记表';
       this.GetReceiveData(this.itemmodel.Id);

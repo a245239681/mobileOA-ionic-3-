@@ -1,57 +1,45 @@
-nextselect {
-    ion-content {
-        position: absolute;
-        left: 20vw;
-        width: 80vw;
-      }
-      
-      ion-list {
+page-returnback {
+    ion-list {
         padding: 0;
         position: relative;
         top: 10px;
         font-size: 4vw;
-        >div {
+        line-height: 1em;
+        clear: left;
+        > div {
           padding: 10px 0;
-          margin-left: 1em;
+          // margin-left: 1em;
           border-top: 1px solid #e0e0e0;
           overflow: hidden;
           &.root {
             margin: 0;
+            border-top: none;
             border-bottom: 1px solid #e0e0e0;
           }
           ion-icon {
             float: left;
             font-size: 1em;
             width: 1.5em;
-            &.hide{
+            &.hide {
               visibility: hidden;
             }
           }
-          ion-checkbox{
+          ion-checkbox,
+          ion-radio {
             float: left !important;
             height: 1em;
             width: 1em;
           }
-          ion-label{
+          ion-label {
             float: left;
             padding-left: 10px;
-            max-width: 60vw;
+            max-width: 80vw;
           }
         }
-        &.list-ios{
+      
+        &.list-ios {
           margin: 0;
         }
       }
       
-      ion-checkbox {
-        vertical-align: middle;
-      }
-      
-      ion-label {
-        line-height: 100%;
-      }
-      
-      ion-icon {
-        float: right;
-      }
 }

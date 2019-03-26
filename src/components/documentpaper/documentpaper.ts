@@ -25,7 +25,7 @@ export class DocumentpaperComponent {
     private modalController: ModalController
   ) {}
 
-  ionViewDidLoad(){
+  ngOnInit() {
     this.RelationTree();
   }
 

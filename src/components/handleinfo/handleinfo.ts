@@ -1,6 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { MainindexService } from '../../service/maiindex/mainindex.service';
 import { CommonHelper } from '../../infrastructure/commonHelper';
+import { Title } from '@angular/platform-browser';
 
 
 @Component({
@@ -10,7 +11,6 @@ import { CommonHelper } from '../../infrastructure/commonHelper';
 export class HandleinfoComponent {
 
   @Input() itemmodel: any;
-
   // 意见数组
   adcviceArr: any[] = [];
 
@@ -49,12 +49,13 @@ export class HandleinfoComponent {
   };
 
   constructor(private service: MainindexService, public toast: CommonHelper) {
-    
+    console.log('进入组件');
   }
 
-  ionViewDidLoad(){
+  ngOnInit() {
     this.getdata();
   }
+  
 
   /**
    * 办理信息-意见列表

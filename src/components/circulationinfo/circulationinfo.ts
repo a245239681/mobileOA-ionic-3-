@@ -34,9 +34,10 @@ export class CirculationinfoComponent {
 
   }
 
-  ionViewDidLoad(){
+  ngOnInit() {
     this.getdata();
   }
+
 
   /**
    * 获取数据

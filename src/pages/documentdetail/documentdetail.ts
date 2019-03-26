@@ -12,6 +12,7 @@ import { MainindexService } from '../../service/maiindex/mainindex.service';
 import { ApiUrlManagement } from '../../infrastructure/api-url-management';
 import { environment } from '../../environments/environment';
 import { getFileMimeType } from '../../infrastructure/regular-expression';
+import { SubmissionPage } from '../submission/submission';
 
 @IonicPage()
 @Component({
@@ -19,6 +20,8 @@ import { getFileMimeType } from '../../infrastructure/regular-expression';
   templateUrl: 'documentdetail.html',
 })
 export class DocumentdetailPage {
+
+  
 
   /**
    * 列表传进来的item
@@ -78,8 +81,9 @@ export class DocumentdetailPage {
   }
 
   segmentChanged(event: any) {
-    this.type = event.target.value;
-    switch (event.target.value) {
+    this.type = event.value;
+    console.log(this.type);
+    switch (event.value) {
       case '1':
         this.title = '办理信息';
         break;
@@ -151,12 +155,10 @@ export class DocumentdetailPage {
   }
 
   pushtoadvice() {
-    // this.itemmodel['IsShowNextStep'] = true;
-    // this.route.navigate(['submission'], {
-    //   queryParams: {
-    //     item: JSON.stringify(this.itemmodel)
-    //   }
-    // });
+    this.itemmodel['IsShowNextStep'] = true;
+    this.navCtrl.push(SubmissionPage,{
+      item: this.itemmodel
+    })
   }
   getBack(item) {
     // this.mainindexService

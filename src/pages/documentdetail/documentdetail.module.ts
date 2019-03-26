@@ -4,6 +4,7 @@ import { DocumentdetailPage } from './documentdetail';
 import { ComponentsModule } from '../../components/components.module';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { SubmissionPageModule } from '../submission/submission.module';
 
 @NgModule({
   declarations: [
@@ -12,6 +13,7 @@ import { FormsModule } from '@angular/forms';
   imports: [
     IonicPageModule.forChild(DocumentdetailPage),
     ComponentsModule,
+    SubmissionPageModule,
     CommonModule,
     FormsModule,
     IonicModule,

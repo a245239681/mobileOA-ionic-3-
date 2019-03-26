@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { IonicPage, NavController, NavParams, Platform, ModalController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Platform, ModalController, ViewController } from 'ionic-angular';
 import { FileTransferObject, FileTransfer } from '@ionic-native/file-transfer/ngx';
 import { CommonHelper } from '../../infrastructure/commonHelper';
 import { FileOpener } from '@ionic-native/file-opener/ngx';
@@ -30,7 +30,7 @@ export class DocumentrelatedPage {
     private fileOpener: FileOpener,
     private transfer: FileTransfer,
     private browser: InAppBrowser,
-    private modalController: ModalController
+    private viewCtrl: ViewController
     ) {
   }
 
@@ -94,9 +94,9 @@ export class DocumentrelatedPage {
   }
   /** 关闭模态框 */
   closemodal(data?: any) {
-    // this.modalController.dismiss({
-    //   result: data
-    // });
+    this.viewCtrl.dismiss({
+      result: data
+    });
   }
 
 

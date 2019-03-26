@@ -70,11 +70,9 @@ export class CommonHelper {
    * 关闭loading
    */
   public dismissLoading() {
-    setTimeout(() => {
-      if (this.loading) {
-        this.loading.dismiss();
-      }
-    }, 500);
+    if (this.loading) {
+      this.loading.dismiss();
+    }
   }
 
   /**

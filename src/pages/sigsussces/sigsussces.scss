@@ -1,0 +1,18 @@
+page-sigsussces {
+    @mixin center-children {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .parent {
+        @include center-children;
+    }
+    
+    .parent {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+    }
+}

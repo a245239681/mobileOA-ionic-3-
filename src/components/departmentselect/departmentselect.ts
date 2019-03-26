@@ -13,29 +13,30 @@ import { CommonHelper } from '../../infrastructure/commonHelper';
   templateUrl: 'departmentselect.html'
 })
 export class DepartmentselectComponent {
-   // 1:主办 2：协办 3：收文移交 4: 发文移交
-   @Input() isSingleSlect: string;
+  // 1:主办 2：协办 3：收文移交 4: 发文移交
+  @Input() isSingleSlect: string;
 
-   @Input() hasSelected: any;
- 
-   @Output() selected = new EventEmitter<{ items: any[],type: string }>();
- 
-   // 列表数据
-   listdataArr: any[] = [];
-   // 移交列表数组
-   handoverListdataArr: any[] = [];
- 
-   selectedList = [];
-   /** 移交选中的数组 */
-   selectList = [];
+  @Input() hasSelected: any;
+
+  @Output() selected = new EventEmitter<{ items: any[], type: string }>();
+
+  // 列表数据
+  listdataArr: any[] = [];
+  // 移交列表数组
+  handoverListdataArr: any[] = [];
+
+  selectedList = [];
+  /** 移交选中的数组 */
+  selectList = [];
 
   constructor(
     private mainindexservice: MainindexService,
     private toast: CommonHelper) {
-    
+
   }
 
-  ionViewDidLoad(){
+
+  ngOnInit() {
     if (this.isSingleSlect === '3' || this.isSingleSlect === '4') {
       this.handoverListdataArr = this.hasSelected;
     }
@@ -61,7 +62,7 @@ export class DepartmentselectComponent {
               }
             }
           }
-          this.selected.emit({ items: this.selectedList,type:this.isSingleSlect });
+          this.selected.emit({ items: this.selectedList, type: this.isSingleSlect });
         } else {
           this.toast.presentToast('已无数据');
         }
@@ -73,7 +74,7 @@ export class DepartmentselectComponent {
   }
 
   singleSelect(item: any) {
-    this.selected.emit({ items: [item],type:this.isSingleSlect });
+    this.selected.emit({ items: [item], type: this.isSingleSlect });
   }
 
   mutiSelect(item: any, checked: boolean) {
@@ -84,7 +85,7 @@ export class DepartmentselectComponent {
         // 去掉没选中的如果之前选过的
         this.selectList = this.selectList.filter(data => data.id !== item.id);
       }
-      this.selected.emit({ items: this.selectList,type:this.isSingleSlect });
+      this.selected.emit({ items: this.selectList, type: this.isSingleSlect });
     } else {
       if (checked) {
         this.selectedList.push(item);
@@ -94,7 +95,7 @@ export class DepartmentselectComponent {
           data => data.id !== item.id
         );
       }
-      this.selected.emit({ items: this.selectedList,type:this.isSingleSlect });
+      this.selected.emit({ items: this.selectedList, type: this.isSingleSlect });
     }
   }
 

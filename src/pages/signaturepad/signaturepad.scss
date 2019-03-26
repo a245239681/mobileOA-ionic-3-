@@ -1,0 +1,32 @@
+page-signaturepad {
+    page-signature {
+        signature-pad {
+            canvas {
+                border: dashed 1px #cccccc;
+                width: 100%;
+                height: 200px;
+            }
+        }
+    }
+    
+    .zbzt {
+        width: 5%;
+        text-align: center;
+        display: inline-block;
+        vertical-align: text-bottom;
+        position: relative;
+    }
+    
+    .qxb {
+        border: 2px solid black;
+        width: 100%;
+        display: inline-block;
+        margin-left: 5px;
+        position: relative;
+    }
+    
+    .sqb{
+        display: inline-block;
+        width: 95%;
+    }
+}

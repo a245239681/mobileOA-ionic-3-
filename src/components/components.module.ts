@@ -4,7 +4,6 @@ import { IonicModule } from 'ionic-angular';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { CirculationinfoComponent } from './circulationinfo/circulationinfo';
-import { CountersignComponent } from './countersign/countersign';
 import { DepartmentselectComponent } from './departmentselect/departmentselect';
 import { DocumentpaperComponent } from './documentpaper/documentpaper';
 import { HandleinfoComponent } from './handleinfo/handleinfo';
@@ -16,7 +15,6 @@ import { VerificationComponent } from './verification/verification';
 @NgModule({
 	declarations: [AttachmentlistComponent,
     CirculationinfoComponent,
-    CountersignComponent,
     DepartmentselectComponent,
     DocumentpaperComponent,
     HandleinfoComponent,
@@ -27,7 +25,6 @@ import { VerificationComponent } from './verification/verification';
 	imports: [IonicModule, FormsModule, CommonModule],
 	exports: [AttachmentlistComponent,
     CirculationinfoComponent,
-    CountersignComponent,
     DepartmentselectComponent,
     DocumentpaperComponent,
     HandleinfoComponent,

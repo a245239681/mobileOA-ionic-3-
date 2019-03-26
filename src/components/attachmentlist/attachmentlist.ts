@@ -36,9 +36,10 @@ export class AttachmentlistComponent {
      
   }
 
-  ionViewDidLoad() {
+  ngOnInit() {
     this.getattchmentlis();
   }
+
   /**
  * 获取附件
  */

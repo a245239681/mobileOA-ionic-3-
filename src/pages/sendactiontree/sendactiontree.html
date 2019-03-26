@@ -1,0 +1,85 @@
+<!--
+  Generated template for the SendactiontreePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>请选择</ion-title>
+    <ion-buttons slot="end">
+      <ion-buttons (click)="handinclick()">提交</ion-buttons>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div *ngIf="floor == 2">
+    <ion-label *ngIf="dataArr.length > 0">
+      <div *ngFor="let item of dataArr; let i = index">
+        <ion-label>
+          {{ item['Label'] }}
+        </ion-label>
+        <ion-list>
+          <ion-item *ngFor="let subitem of item['Children']" (click)="singleselect(subitem, $event)">
+            <ion-label>
+              {{ subitem['Label'] }}
+            </ion-label>
+            <ion-radio [(checked)]="selectItem == subitem"></ion-radio>
+          </ion-item>
+        </ion-list>
+      </div>
+    </ion-label>
+  </div>
+  <div *ngIf="floor == 3">
+    <ion-radio>
+      <ng-container *ngTemplateOutlet="treeTpl; context: { items: treeData, level: 0 }"></ng-container>
+    </ion-radio>
+    <ng-template #treeTpl let-items="items" let-level="level" let-data="data">
+      <ion-list>
+        <div *ngFor="let item of items" [ngClass]="{ root: level === 0 }" (click)="singleselect(item, data, $event)">
+          <ion-icon [ngStyle]="{ paddingLeft: level + 'em' }" [ngClass]="{ hide: item.data.Type == 2 }"
+            [name]="item.expanded ? 'arrow-dropdown' : 'arrow-dropright'"></ion-icon>
+          <ion-radio [(checked)]="item.checked" *ngIf="item.data.Type == 2" (click)="singleselect(item, data, $event)">
+          </ion-radio>
+          <ion-label>{{ item.text }}</ion-label>
+          <div *ngIf="item.expanded && item.children.length">
+            <ng-container *ngTemplateOutlet="
+                  treeTpl;
+                  context: {
+                    items: item.children,
+                    level: level + 1,
+                    data: item.value
+                  }
+                "></ng-container>
+          </div>
+          <div *ngIf="item.expanded && item.children.length === 0" style="clear:left">
+            <span [ngStyle]="{ paddingLeft: 'calc(10px + 2.5em)' }"><small>没有可选择的项</small></span>
+          </div>
+        </div>
+      </ion-list>
+    </ng-template>
+    <!-- <ion-label *ngIf="dataArr.length > 0">
+        <div *ngFor="let item of dataArr,let i = index">
+          <ion-label>
+            {{item['Label']}}
+          </ion-label>
+          <ion-list>
+            <div *ngFor="let subitem of item['Children']">
+              <ion-label>
+                {{subitem['Label']}}3
+              </ion-label>
+              <ion-list>
+                <ion-item *ngFor="let subitem2 of subitem['Children'],let j = index" (click)="singleselect(subitem2,j)">
+                  <ion-label>
+                    {{subitem2['Label']}}
+                  </ion-label>
+                  <ion-radio [(checked)]="selectItem == subitem2"></ion-radio>
+                </ion-item>
+              </ion-list>
+            </div>
+          </ion-list>
+        </div>
+      </ion-label> -->
+  </div>
+</ion-content>
