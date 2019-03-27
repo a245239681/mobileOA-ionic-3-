@@ -8,10 +8,10 @@
   <ion-navbar>
     <ion-title>{{ title }}</ion-title>
     <ion-buttons [hidden]="!nbyj()" slot="end">
-      <ion-buttons (click)="pushtoadvice()">拟办意见</ion-buttons>
+      <button (click)="pushtoadvice()">拟办意见</button>
     </ion-buttons>
     <ion-buttons [hidden]="!(itemmodel['Backable'] && !nbyj())" slot="end">
-      <ion-buttons (click)="getBack(itemmodel)">取回</ion-buttons>
+      <button (click)="getBack(itemmodel)">取回</button>
     </ion-buttons>
   </ion-navbar>
 </ion-header>

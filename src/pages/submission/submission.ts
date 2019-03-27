@@ -174,11 +174,11 @@ export class SubmissionPage {
               if (!tempArr) {
                 tempArr = [];
               }
-              this.navCtrl.push(HaveoverpersonselectPage,{
+              this.navCtrl.push(HaveoverpersonselectPage, {
                 item: this.itemmodel,
                 hasSelected: tempArr,
               });
-              
+
               this.saveadvice(value['advice']);
             },
             () => {
@@ -207,7 +207,7 @@ export class SubmissionPage {
                   if (!tempArr) {
                     tempArr = [];
                   }
-                  this.navCtrl.push(HaveoverpersonselectPage,{
+                  this.navCtrl.push(HaveoverpersonselectPage, {
                     item: this.itemmodel,
                     hasSelected: tempArr,
                   });
@@ -240,7 +240,7 @@ export class SubmissionPage {
           res => {
             if ((<any>res).State === 1) {
 
-              this.navCtrl.push(ReturnbackPage,{
+              this.navCtrl.push(ReturnbackPage, {
                 item: this.itemmodel
               });
               this.saveadvice(value['advice']);
@@ -272,7 +272,7 @@ export class SubmissionPage {
                 if (!tempArr) {
                   tempArr = [];
                 }
-                this.navCtrl.push(HaveoverpersonselectPage,{
+                this.navCtrl.push(HaveoverpersonselectPage, {
                   item: this.itemmodel,
                   hasSelected: tempArr,
                 });
@@ -288,7 +288,7 @@ export class SubmissionPage {
         });
     }
   }
-  ngOnInit() {}
+  ngOnInit() { }
 
   /**
    * 获取保存意见需要的attitudeType open接口
@@ -533,7 +533,7 @@ export class SubmissionPage {
                       this.sendStepName == '保密信息意见' ||
                       this.sendStepName == '公开信息意见'
                     ) {
-                      this.navCtrl.push(SecretinfoadvicePage,{
+                      this.navCtrl.push(SecretinfoadvicePage, {
                         item: this.itemmodel,
                         title: this.sendStepName
                       })
@@ -595,7 +595,7 @@ export class SubmissionPage {
           text: '取消',
           role: 'cancle',
           cssClass: 'secondary',
-          handler: () => {}
+          handler: () => { }
         }
       ]
     });
@@ -663,7 +663,7 @@ export class SubmissionPage {
           text: '取消',
           role: 'cancle',
           cssClass: 'secondary',
-          handler: () => {}
+          handler: () => { }
         }
       ]
     });
@@ -714,7 +714,7 @@ export class SubmissionPage {
       );
   }
 
-  
+
 
 
   async goSign() {
@@ -752,7 +752,7 @@ export class SubmissionPage {
               data => {
                 if (data['State'] === 1) {
                   this.navCtrl.push(SigsusscesPage);
-                  
+
                 } else {
                   this.toast.presentToast('签发失败');
                 }
@@ -788,6 +788,7 @@ export class SubmissionPage {
     });
     await modal.present();
     // 接收模态框传回的值
-    //const data = await modal.onDidDismiss();
+    //const data = await modal.onDidDismiss();   
+
   }
 }

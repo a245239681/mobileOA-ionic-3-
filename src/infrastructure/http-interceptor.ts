@@ -100,7 +100,7 @@ export class AuthInterceptor implements HttpInterceptor {
   private deductRequestCount() {
     this.requestCount--;
     if (this.requestCount <= 0) {
-      this.commonhelper.dismissLoading();
+     // this.commonhelper.dismissLoading();
     }
 
     // if (this.requestCount > 1){
@@ -124,7 +124,7 @@ export class AuthInterceptor implements HttpInterceptor {
     });
     // 避免连续多个loading闪屏
     if (this.requestCount <= 0) {
-      this.commonhelper.presentLoading();
+    //  this.commonhelper.presentLoading();
     }
     this.requestCount++;
     return next.handle(authReq).pipe(

@@ -79,7 +79,7 @@ export class PersonselectPage {
   }
 
   segmentChanged(event: any) {
-    switch (event.detail.value) {
+    switch (event.value) {
       case '1': // 主办
         this.type = 1;
         this.isDepartmentSelect = true;

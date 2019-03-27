@@ -53,16 +53,17 @@ export class DocumentdetailPage {
   ) {
 
     this.itemmodel = navParams.get('item');
+   
+  }
+
+  ionViewDidLoad() {
+    //如果是传阅件的时候
     if (this.itemmodel['documenttype'] == 3) {
       this.mainindexService
         .SetDoRead(this.itemmodel['Id'], '')
         .subscribe(res => {
         });
     }
-  }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad DocumentdetailPage');
   }
 
   nbyj() {
