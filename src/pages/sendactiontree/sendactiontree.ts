@@ -22,7 +22,7 @@ export class SendactiontreePage {
   itemmodel: any;
 
   //列表数组
-  dataArr: any;
+  dataArr: any = [];
 
   //层数目
   floor: number;
@@ -74,8 +74,10 @@ export class SendactiontreePage {
       .toPromise();
     // .subscribe((res: any) => {
 
+    console.log(res);
     if (res.State === 1) {
       this.floor = res.Data[0].Type === 2 ? 2 : 3;
+      this.dataArr = res.Data;
       this.treeData = res.Data.map(p => this.generateData(p));
     }
   }
